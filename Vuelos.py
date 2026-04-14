@@ -7,7 +7,9 @@ class Vuelo:
         self.__destino = destino
         self.__precio_base_vu = precio_base_vu
         self.__lista_asiento = []
-        
+
+        """Con este for se genera una lista de asientos para normal, economico y premium
+    """  
         for i in range(1, 21):
             self.__lista_asiento.append(AsientoEco(i, 1, 50000))
         for i in range(21, 36):
