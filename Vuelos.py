@@ -7,10 +7,11 @@ class Vuelo:
         self.__destino = destino
         self.__precio_base_vu = precio_base_vu
         self.__lista_asiento = []
+        """Se hace uso de la lista para aglomerar la cantidad de asientos que poseemos y sus diferentes caracteristicas
+        """
 
-        """Con este for se genera una lista de asientos para normal, economico y premium, haciendo el uso del %
-        y se le asigna a cada uno la distinta posicion, se uso ayuda de ia para este for haciendo uso del %(modulo)
-        para tener el patron deseado (Ventana-Mitad-pasillo)
+        """Con este for ordenamos la lista de asientos para normal, economico y premium, haciendo el uso de %
+        y se le asigna a cada uno la distinta posicion, se uso ia para conseguir el patron deseado (Ventana-Mitad-pasillo)
     """  
         for i in range(1, 21):
             if i % 6 == 1: #Modulo toma el residuo de la division
