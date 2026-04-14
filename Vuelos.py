@@ -8,33 +8,52 @@ class Vuelo:
         self.__precio_base_vu = precio_base_vu
         self.__lista_asiento = []
 
-        """Con este for se genera una lista de asientos para normal, economico y premium,
-        y se le asigna a cada uno la distinta posicion
+        """Con este for se genera una lista de asientos para normal, economico y premium, haciendo el uso del %
+        y se le asigna a cada uno la distinta posicion, se uso ayuda de ia para este for haciendo uso del %(modulo)
+        para tener el patron deseado (Ventana-Mitad-pasillo)
     """  
         for i in range(1, 21):
-            if i % 3 == 1:
+            if i % 6 == 1: #Modulo toma el residuo de la division
                 ubi = "Ventana"
-            if i % 3 == 2:
+            elif i % 6 == 2:
+                ubi = "Mitad"
+            elif i % 6 == 3:
+                ubi = "Pasillo"
+            elif i % 6 == 4:
+                ubi = "Pasillo"
+            elif i % 6 == 5:
                 ubi = "Mitad"
             else:
-                ubi = "Pasillo"
-            self.__lista_asiento.append(AsientoEco(i, 1, 50000, ubi))
+                ubi = "Ventana"
+            self.__lista_asiento.append(AsientoEco(i, 1, ubi))
         for i in range(21, 36):
-            if i % 3 == 1:
+            if i % 6 == 0:
                 ubi = "Ventana"
-            if i % 3 == 2:
+            elif i % 6 == 2:
+                ubi = "Mitad"
+            elif i % 6 == 3:
+                ubi = "Pasillo"
+            elif i % 6 == 4:
+                ubi = "Pasillo"
+            elif i % 6 == 5:
                 ubi = "Mitad"
             else:
-                ubi = "Pasillo"
-            self.__lista_asiento.append(AsientoNorm(i, 1, 80000, ubi))
+                ubi = "Ventana"
+            self.__lista_asiento.append(AsientoNorm(i, 1, ubi))
         for i in range(36, 46):
-            if i % 3 == 1:
+            if i % 6 == 1:
                 ubi = "Ventana"
-            if i % 3 == 2:
+            elif i % 6 == 2:
+                ubi = "Mitad"
+            elif i % 6 == 3:
+                ubi = "Pasillo"
+            elif i % 6 == 4:
+                ubi = "Pasillo"
+            elif i % 6 == 5:
                 ubi = "Mitad"
             else:
-                ubi = "Pasillo"
-            self.__lista_asiento.append(AsientoPrem(i, 1, 120000, ubi))
+                ubi = "Ventana"
+            self.__lista_asiento.append(AsientoPrem(i, 1, ubi))
 
     # Getters
     def get_id_vuelo(self):
@@ -51,4 +70,9 @@ class Vuelo:
     
     def get_lista_asiento(self):
         return self.__lista_asiento
+
+    def mostrar_asientos(self):
+        for asiento in self.__lista_asiento:
+            dispo = "Disponible" if asiento.get_dispo() else "No disponible"
+            print(f"{asiento.get_num_asi()} - {asiento.get_ubi()} - {asiento.describir()} - {dispo}")
 
