@@ -8,14 +8,33 @@ class Vuelo:
         self.__precio_base_vu = precio_base_vu
         self.__lista_asiento = []
 
-        """Con este for se genera una lista de asientos para normal, economico y premium
+        """Con este for se genera una lista de asientos para normal, economico y premium,
+        y se le asigna a cada uno la distinta posicion
     """  
         for i in range(1, 21):
-            self.__lista_asiento.append(AsientoEco(i, 1, 50000))
+            if i % 3 == 1:
+                ubi = "Ventana"
+            if i % 3 == 2:
+                ubi = "Mitad"
+            else:
+                ubi = "Pasillo"
+            self.__lista_asiento.append(AsientoEco(i, 1, 50000, ubi))
         for i in range(21, 36):
-            self.__lista_asiento.append(AsientoNorm(i, 1, 80000))
+            if i % 3 == 1:
+                ubi = "Ventana"
+            if i % 3 == 2:
+                ubi = "Mitad"
+            else:
+                ubi = "Pasillo"
+            self.__lista_asiento.append(AsientoNorm(i, 1, 80000, ubi))
         for i in range(36, 46):
-            self.__lista_asiento.append(AsientoPrem(i, 1, 120000))
+            if i % 3 == 1:
+                ubi = "Ventana"
+            if i % 3 == 2:
+                ubi = "Mitad"
+            else:
+                ubi = "Pasillo"
+            self.__lista_asiento.append(AsientoPrem(i, 1, 120000, ubi))
 
     # Getters
     def get_id_vuelo(self):
